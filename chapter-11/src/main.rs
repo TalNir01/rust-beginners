@@ -29,7 +29,7 @@ impl Iterator for PythonRange {
     type Item = u32;
     fn next(&mut self) -> Option<u32> {
         if self.current >= self.stop {
-            None // Stop iterator  
+            None // Stop iterator
         } else {
             let returned = Some(self.current);
             self.current += self.step;

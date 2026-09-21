@@ -33,7 +33,7 @@ fn main() {
 
         closure();
         v.push(100); // Used mutable borrow
-        // closure(); // Used immutable borrow - Compile Error
+                     // closure(); // Used immutable borrow - Compile Error
         dbg!(v);
     }
 

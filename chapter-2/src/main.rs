@@ -2,8 +2,8 @@ fn main() {
     {
         println!("Tuples Example");
         let t: (bool, (f64, f64)) = (true, (2.5, 2.6));
-        let x: f64 = t.1.0;
-        let y: f64 = t.1.1;
+        let x: f64 = t.1 .0;
+        let y: f64 = t.1 .1;
         println!("x: {}, y: {}", x, y);
 
         let (flag, (x, y)) = t;
@@ -15,7 +15,11 @@ fn main() {
         let x = {
             let y = 10;
             let z = 15;
-            if y > z { y + z } else { y - z } // Return!
+            if y > z {
+                y + z
+            } else {
+                y - z
+            } // Return!
         };
         println!("x: {}", x);
     }

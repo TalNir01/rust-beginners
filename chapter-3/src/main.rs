@@ -67,12 +67,12 @@ fn main() {
         let mut v = vec![1, 2, 3]; // Support 2 syntaxes: vec![1, 2, 3] or vec![1; 3] -> Creates a vector of 3 elements, all initialized to 1
         v.push(-10);
         print_vec(v); // Takes ownership of v and prints it to the console -> After it `v` is no longer valid
-        // println!("Length of vector is {}", v.len()); // This will cause a compile-time error because `v` has been moved to `print_vec` and is no longer valid");
+                      // println!("Length of vector is {}", v.len()); // This will cause a compile-time error because `v` has been moved to `print_vec` and is no longer valid");
     }
     {
         println!("Vector Ownership Example");
         let v = vec![6; 10]; // Creates a vector of 10 elements, all initialized to 6
-        // Takes ownership of v and prints each element to the console -> After it `v` is no longer valid
+                             // Takes ownership of v and prints each element to the console -> After it `v` is no longer valid
         for ele in v {
             println!("{}", ele);
         }
@@ -81,7 +81,7 @@ fn main() {
 
         // Fix by `.iter()` method
         let v = vec![6; 10]; // Creates a vector of 10 elements, all initialized to 6
-        // By using `.iter()` method, we can iterate over the elements of the vector without taking ownership of it, so `v` remains valid after the loop
+                             // By using `.iter()` method, we can iterate over the elements of the vector without taking ownership of it, so `v` remains valid after the loop
         for ele in v.iter() {
             println!("{}", ele);
         }
@@ -89,7 +89,7 @@ fn main() {
 
         // Fix by `.iter()` method
         let v = vec![6; 10]; // Creates a vector of 10 elements, all initialized to 6
-        // By using `.iter()` method, we can iterate over the elements of the vector without taking ownership of it, so `v` remains valid after the loop
+                             // By using `.iter()` method, we can iterate over the elements of the vector without taking ownership of it, so `v` remains valid after the loop
         for ele in &v {
             println!("{}", ele);
         }
@@ -111,26 +111,26 @@ fn main() {
         dbg!(*x_ref); // This will work because x is still valid after the reference is created
         *x_ref += 1; // This will work because x is still valid after the reference is created, mutating original value!
         dbg!(*x_ref); // This will work because x is still valid after the reference is created
-        // NOTE: To change what `x_ref` you must redeclare as mutable `let mut x_ref: &mut i32 = &mut x;`
-        // let mut y = 10;
-        // x_ref = &mut y; // Raise an compile error, due to the variable `x_ref` is not mutable, so we cannot reassign it to a new reference. To fix this, we can declare `x_ref` as mutable by using `let mut x_ref: &mut i32 = &mut x;` instead of `let x_ref: &mut i32 = &mut x;`
-        // dbg!(x_ref); // This will work because x is still valid after the reference is created
+                      // NOTE: To change what `x_ref` you must redeclare as mutable `let mut x_ref: &mut i32 = &mut x;`
+                      // let mut y = 10;
+                      // x_ref = &mut y; // Raise an compile error, due to the variable `x_ref` is not mutable, so we cannot reassign it to a new reference. To fix this, we can declare `x_ref` as mutable by using `let mut x_ref: &mut i32 = &mut x;` instead of `let x_ref: &mut i32 = &mut x;`
+                      // dbg!(x_ref); // This will work because x is still valid after the reference is created
     }
 
     {
         println!("Modify Vector Example");
         let mut v = vec![1, 2, 3]; // Creates a vector
         modify_vec(&mut v); // Passes a mutable reference to the vector to the function
-        // modify_vec(&v); // Error: function expect mutable reference, but we are passing an immutable reference. To fix this, we can pass a mutable reference to the function by using `&mut v` instead of `&v` (Types differ in mutability)
+                            // modify_vec(&v); // Error: function expect mutable reference, but we are passing an immutable reference. To fix this, we can pass a mutable reference to the function by using `&mut v` instead of `&v` (Types differ in mutability)
         dbg!(v); // This will work because `v` is still valid after the function call
     }
 
     {
         println!("Modify Vector Example #2");
         let mut v = vec![2]; // Creates a vector
-        // let r = &v[0]; // Creates a reference to the first element of the vector
+                             // let r = &v[0]; // Creates a reference to the first element of the vector
         modify_vec(&mut v); // Passes a mutable reference to the vector to the function
-        // dbg!(*r); // Cannot use mutable and immutable references in the same scope, so this will cause a compile-time error because `r` is an immutable reference to the first element of the vector, and `modify_vec` takes a mutable reference to the vector. To fix this, we can either remove the immutable reference or use a mutable reference instead.
+                            // dbg!(*r); // Cannot use mutable and immutable references in the same scope, so this will cause a compile-time error because `r` is an immutable reference to the first element of the vector, and `modify_vec` takes a mutable reference to the vector. To fix this, we can either remove the immutable reference or use a mutable reference instead.
         dbg!(v); // This will work because `v` is still valid after the function call
     }
 
@@ -144,7 +144,7 @@ fn main() {
     {
         println!("Sum Example");
         let v = vec![1, 2, 3, 4, 5]; // Creates a vector
-        // let sum = sum(&v[0..3]); // Compile Error - Type `&[i32]` cannot be passed to a function that expects `&Vec<i32>`.
+                                     // let sum = sum(&v[0..3]); // Compile Error - Type `&[i32]` cannot be passed to a function that expects `&Vec<i32>`.
         let sum = sum(&v); // Passes a reference to the vector to the function
         dbg!(sum); // This will work because `v` is still valid after the function call
     }
